@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="list">
+    <ol>
+    {% for person in people %}
+    <li>
+        <div>
+
+        <span class="name">{{ person.person_name }}</span>
+
+        {% for gift in person.gift_set.all %}
+            <p>{{ gift.gift_name }}</p>
+            <p><em>{{ gift.gift_description }}</em></p>
+        {% endfor %}
+
+        </div>
+    </li>
+    {% endfor %}
+    </ol>
+
+    {% if user.is_authenticated %}
+        <!-- Large modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Timer</button>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="countdown callback">
+
+                </div>
+
+            </div>
+          </div>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock content %}

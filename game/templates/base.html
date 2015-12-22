@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mattson Gift Game</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+    <style>
+        body {
+          background-image: url('http://funwithmattsons.com/img/dark-red-christmas-background.jpg');
+          color: white;
+        }
+
+        .list {
+            -webkit-column-count: 3; /* Chrome, Safari, Opera */
+            -moz-column-count: 3; /* Firefox */
+            column-count: 3;
+            
+            padding-top: 1em;
+            max-height: 700px;
+            width: 1000px;
+        }
+
+        ol {
+              -webkit-padding-start: 60px;
+        }
+
+
+        li {
+          -webkit-column-break-inside: avoid;
+                    page-break-inside: avoid;
+                         break-inside: avoid;
+          font-size: 1.6em;
+          margin-bottom: 10px;
+        }
+
+        .name {
+          font-weight: bold;
+        }
+
+        .list p {
+          margin: 0;
+          font-size: 0.5em;
+        }
+
+        .callback,
+        .simple,
+        .offset {
+          font-size: 6em;
+          background: #27ae60;
+          padding: 2em;
+          color: #ecf0f1;
+          -webkit-transition: background 0.5s ease-out;
+          transition: background 0.5s ease-out;
+          text-align: center;
+        }
+        .offset {
+          margin-bottom: 10px;
+        }
+        .callback{
+          cursor: pointer;
+        }
+        .ended {
+          background: #c0392b;
+      } 
+    </style>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://funwithmattsons.com/timer/jquery-wrapper.js"></script>
+    <script type="text/javascript" src="http://funwithmattsons.com/timer/jquery.countdown.js"></script>
+
+    <script>
+
+    $(function() {
+        $('.countdown.callback').countdown({
+              date: +(new Date) + 60000,
+              render: function(data) {
+                $(this.el).text(this.leadingZeros(data.sec, 2) + " seconds");
+              },
+              onEnd: function() {
+                $(this.el).addClass('ended');
+              }
+            }).on("click", function() {
+              $(this).removeClass('ended').data('countdown').update(+(new Date) + 60000).start();
+            });
+        });
+    </script>
+
+    
+
+</head>
+
+<body>
+
+    <div class="container theme-showcase" role="main">
+    <div class="row">
+        <div class="col-md-12">
+    {% block content %}
+
+
+    {% endblock content %}
+        </div>
+    </div>
+</div>
+<!-- Large modal -->
+
+<!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+    <script type="text/javascript">
+
+
+</script>
+
+</body>
+</html>
